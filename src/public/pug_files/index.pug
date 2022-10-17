@@ -1,0 +1,120 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title= "Список пользователей"
+        link(href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css", rel="stylesheet")
+        link(href="/stylesheet_files/index.css", rel="stylesheet")
+        script(src="https://code.jquery.com/jquery-3.6.0.js")
+        script(src="https://code.jquery.com/ui/1.13.2/jquery-ui.js")
+    body
+        h2.title Список пользователей
+        div.scroll-table
+            table(border=1)
+                thead
+                    tr.title_row
+                        th Фото
+                        th Имя
+                        th Дата рождения
+                        th Почта
+                        th.role Роль
+                        th.state Статус
+                tbody
+                    if users
+                       for user in users
+                            tr(id= user.id)
+                                th
+                                    img(src= user.img)
+                                th
+                                    a(href="/user/" + user.id) #{user.name}
+                                th
+                                    input.date(type="text"  value= user.birthday id="date:" + user.id)
+                                th
+                                    input.mail(type="email" id="mail:"+user.id value= user.mail pattern="/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i")
+                                th.role
+                                    select.sel.role(name="role" id= "role:" + user.id)
+                                        if user.role === "admin"
+                                            option.ad(selected= "selected" value="admin") Администратор
+                                            option.us(value= "user") Пользователь
+                                        else
+                                            option(value="admin") Администратор
+                                            option(selected= "selected" value="user") Пользователь
+
+                                th.state(id= "thstate:" + user.id onclick= "click(this);")
+                                    select.sel.stat(name="status" id= "status:" + user.id)
+                                        if user.status === "active"
+                                           option(selected= "selected" value="active") Активный
+                                           option(value="unconfirmed") Не подтверждённый
+                                           option(value="locked") Заблокированный
+                                        else if user.status === "locked"
+                                           option Активный
+                                           option Не подтверждённый
+                                           option(selected= "selected") Заблокированный
+                                        else
+                                           option Активный
+                                           option(selected= "selected") Не подтверждённый
+                                           option Заблокированный
+            script.
+                $(".date").datepicker();
+                $( ".sel" ).selectmenu();
+                $.datepicker.setDefaults({
+                    closeText: "Закрыть",
+                    prevText: "Пред",
+                    nextText: "След",
+                    currentText: "Сегодня",
+                    monthNames: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+                        "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                    monthNamesShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн",
+                        "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+                    dayNames: ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"],
+                    dayNamesShort: ["вск", "пнд", "втр", "срд", "чтв", "птн", "сбт"],
+                    dayNamesMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+                    weekHeader: "Нед",
+                    dateFormat: "dd.mm.yy",
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: ""});
+
+                $(document).on('change', '.date', function () {
+                    var cur = (this.id).replace("date:","")
+                    var text = this.value
+                          $.ajax({
+                              url: "/editdate",
+                              method: 'post',
+                              dataType: 'html',
+                              data: {text: text, user: cur},
+                               })
+                });
+                $(document).on('change', '.mail', function () {
+                    var cur = (this.id).replace("mail:", "")
+                    var text = this.value
+                    $.ajax({
+                        url: "/editmail",
+                        method: 'post',
+                        dataType: 'html',
+                        data: {text: text, user: cur},
+                    })
+                });
+                $(document).on('selectmenuchange', '.sel.role', function () {
+                    var cur = (this.id).replace("role:", "")
+                    var text = this.value;
+                $.ajax({
+                url: "/editrole",
+                    method: 'post',
+                    dataType: 'html',
+                    data: {text: text, user: cur},
+                    })
+                });
+                $(document).on('selectmenuchange', '.sel.stat', function () {
+                    var cur = (this.id).replace("status:", "")
+                    var text = this.value;
+                    $.ajax({
+                        url: "/editstat",
+                        method: 'post',
+                        dataType: 'html',
+                        data: {text: text, user: cur},
+                    })
+                });
+
+

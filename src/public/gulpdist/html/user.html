@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Пользователь</title><link href="/node_modules/jquery-ui-dist/jquery-ui.css" rel="stylesheet"><link href="/stylesheet_files/user.css" rel="stylesheet"><script src="/node_modules/jquery/dist/jquery.min.js"></script><script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script></head><body><script src="/script_files/index.js"></script><form class="exit" action="/"><button class="back">Назад<img src="/image_files/backpic.png"></button></form><div class="origbox"><div class="publishbox"><h3>Опубликовать новость</h3></div><div class="newsbox"><h3>Мои новости</h3><textarea id="mynws" readonly="readonly"></textarea></div></div></body><script>$("#pub").button()
+$(".back").button()
+$(".next").button()
+$("#pubform").on("submit", function () {
+    $.ajax({
+        url: '/addnews',
+        method: 'post',
+        dataType: 'html',
+        data: $(this).serialize()
+    });
+});</script></html>

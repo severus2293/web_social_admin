@@ -1,0 +1,76 @@
+body {
+  min-width: 1240px;
+  min-height: 1200px;
+  background-image: url("../image_files/back_main.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h2.title {
+  color: #379683;
+  text-align: center;
+}
+
+.scroll-table-body {
+  height: 200px;
+  overflow-x: auto;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.scroll-table table {
+  word-wrap: break-word;
+  margin-left: 20%;
+  table-layout: fixed;
+  border: none;
+}
+
+.scroll-table thead th {
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  padding: 10px 15px;
+  background: #d8d8d8;
+  font-size: 14px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.scroll-table tbody td {
+  text-align: left;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 10px 15px;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.scroll-table tbody th {
+  background: #190061;
+  color: #dddddd;
+}
+.scroll-table tbody th a {
+  color: blue;
+}
+.scroll-table tbody th img {
+  width: 30px;
+  height: 30px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background: coral;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/*# sourceMappingURL=index.css.map */

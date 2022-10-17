@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title= "Пользователь"
+        link(href="/node_modules/jquery-ui-dist/jquery-ui.css", rel="stylesheet")
+        link(href="/stylesheet_files/user.css", rel="stylesheet")
+        script(src="/node_modules/jquery/dist/jquery.min.js")
+        script(src="/node_modules/jquery-ui-dist/jquery-ui.min.js")
+    body
+        script(src="/script_files/index.js")
+        form.exit(action="/")
+          button.back Назад
+            img(src= "/image_files/backpic.png")
+        div.origbox
+          div.publishbox
+            h3 Опубликовать новость
+            if user
+                form#pubform.publish(action="/user/" + user.id+"/addnews" method="POST")
+                   textarea#area(name="text")
+                   button#pub Опубликовать
+          div.newsbox
+            h3 Мои новости
+            textarea#mynws(readonly) #{resmes}
+          if user
+              div.databox
+                img(src= user.img)
+                h3 #{user.name}
+                form(action="/user/" + user.id +"/friends")
+                  button.next(type="submit") Список друзей
+                    img(src= "/image_files/friendpic.png")
+                form(action="/user/"+ user.id +"/news")
+                  button.next.news Список новостей
+                    img(src= "/image_files/newspic.png")
+    script.
+        $("#pub").button()
+        $(".back").button()
+        $(".next").button()
+        $("#pubform").on("submit", function () {
+            $.ajax({
+                url: '/addnews',
+                method: 'post',
+                dataType: 'html',
+                data: $(this).serialize()
+            });
+        });

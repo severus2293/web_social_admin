@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title= "Список пользователей"
+        link(href="/node_modules/jquery-ui-dist/jquery-ui.css", rel="stylesheet")
+        link(href="/stylesheet_files/friends.css", rel="stylesheet")
+        script(src="/node_modules/jquery/dist/jquery.min.js")
+        script(src="/node_modules/jquery-ui-dist/jquery-ui.min.js")
+    body
+        h2.title Список друзей
+        form.exit(action="./")
+            button.back Назад
+                img(src= "/image_files/backpic.png")
+        div.scroll-table
+            table(border= 1)
+                thead
+                    tr.title_row
+                        th Фото
+                        th Имя
+            div.scroll-table-body
+                table(border=1)
+                    tbody
+                        if friends
+                            for friend_id in friends
+                                tr(id= friend_id)
+                                    th
+                                        img(src= users[friend_id].img)
+                                    th
+                                        a(href="/user/" + friend_id) #{users[friend_id].name}
+

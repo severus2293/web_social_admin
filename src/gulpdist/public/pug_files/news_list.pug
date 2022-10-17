@@ -1,0 +1,22 @@
+doctype html
+-var friends
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title= "Список пользователей"
+        link(href="/node_modules/jquery-ui-dist/jquery-ui.css", rel="stylesheet")
+        link(href="/stylesheet_files/news.css", rel="stylesheet")
+        script(src="/node_modules/jquery/dist/jquery.min.js")
+        script(src="/node_modules/jquery-ui-dist/jquery-ui.min.js")
+    body
+        form.exit(action="./")
+            button.back Назад
+                img(src= "/image_files/backpic.png")
+        div.box
+          h2.title Список новостей
+          dl
+            if friends
+                for friend_id in friends
+                    for message in users[friend_id].messages
+                        dt #{users[friend_id].name}, #{message.date}
+                        dd #{message.mes}

@@ -1,0 +1,42 @@
+@import "definition.sass"
+
+body
+  min-width: 1240px
+  min-height: 1200px
+  background-image: url("../image_files/back_main.jpg")
+  +transform(cover)
+  background-repeat: no-repeat
+
+
+button.back
+  position: relative
+  left: 90%
+  background: $hide-color
+  border: $hide-color
+  color: $first-color
+  font-weight: bolder
+  font-size: 20px
+  cursor: pointer
+  img
+    float: left
+    height: 10%
+h2.title
+  color: $first-color
+  text-align: center
+
+dl
+  width: 300px
+  background: $third-color
+  overflow-y: scroll
+  height: 300px
+  dt
+    font: normal 14px Georgia
+    background-color: #EFB358
+    border-bottom: none
+  dd
+    color: white
+    margin-left: 0
+div.box
+  display: flex
+  align-items: center
+  flex-direction: column

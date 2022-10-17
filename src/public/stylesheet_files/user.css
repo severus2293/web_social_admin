@@ -1,0 +1,119 @@
+body {
+  min-width: 1240px;
+  width: 1440px;
+  height: 1024px;
+  min-height: 800px;
+  position: relative;
+  background-image: url("../image_files/back_user.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+button.back {
+  position: relative;
+  left: 90%;
+  z-index: 3;
+  background: transparent;
+  border: transparent;
+  color: #379683;
+  font-weight: bolder;
+  font-size: 20px;
+  cursor: pointer;
+}
+button.back img {
+  float: left;
+  height: 10%;
+}
+
+div.publishbox {
+  order: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: -35%;
+}
+div.publishbox h3 {
+  color: white;
+}
+div.publishbox textarea {
+  resize: none;
+  width: 140%;
+  height: 50px;
+  margin-left: -18%;
+  background: #190061;
+  color: white;
+}
+div.publishbox button {
+  cursor: pointer;
+  width: 80%;
+  height: 30px;
+  margin-top: 3%;
+  margin-left: 10%;
+  background: #3500D3;
+  color: white;
+  font-weight: bolder;
+}
+div.publishbox button#pub:hover {
+  background: green;
+}
+
+div.newsbox {
+  margin-top: 5%;
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: flex-end;
+}
+div.newsbox textarea {
+  resize: none;
+  overflow-y: scroll;
+  width: 28%;
+  background: #190061;
+  color: white;
+  height: 300px;
+  margin-left: 1%;
+}
+
+div.databox {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  order: -1;
+}
+div.databox img {
+  width: 20%;
+  height: 20%;
+}
+div.databox h3 {
+  margin-left: 5%;
+}
+div.databox button.next {
+  background: transparent;
+  border: transparent;
+  color: white;
+  cursor: pointer;
+  line-height: 27px;
+}
+div.databox button.next img {
+  float: left;
+  line-height: -50px;
+}
+div.databox button.next.news {
+  margin-top: 20px;
+}
+
+h3 {
+  color: white;
+}
+
+div.origbox {
+  display: flex;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=user.css.map */

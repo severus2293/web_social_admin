@@ -1,0 +1,85 @@
+@import "definition.sass"
+body
+  min-width: 1240px
+  min-height: 1200px
+  background-image: url("../image_files/back_main.jpg")
+  +transform(cover)
+  background-repeat: no-repeat
+
+button.back
+  position: relative
+  left: 90%
+  background: $hide-color
+  border: $hide-color
+  color: #379683
+  font-weight: bolder
+  font-size: 20px
+  cursor: pointer
+  img
+    float: left
+    height: 10%
+
+h2.title
+  color: $first-color
+  text-align: center
+
+
+.scroll-table-body
+  height: 200px
+  overflow-x: auto
+
+  margin-top: 0px
+  margin-bottom: 20px
+
+
+.scroll-table table
+  word-wrap: break-word
+  margin-left: 15%
+  width: 70%
+  table-layout: fixed
+  border: none
+
+
+
+
+
+.scroll-table thead th
+
+  font-weight: bold
+  text-align: center
+  border: none
+  padding: 10px 15px
+  background: #d8d8d8
+  font-size: 14px
+  border-left: $second-color
+  border-right: $second-color
+
+.scroll-table tbody td
+  text-align: left
+  border-left: $second-color
+  border-right: $second-color
+  padding: 10px 15px
+  font-size: 14px
+  vertical-align: top
+
+.scroll-table tbody th
+
+  width: 100%
+  background: $third-color
+  color: #dddddd
+  a
+    color: blue
+  img
+    width: 30px
+    height: 30px
+
+
+::-webkit-scrollbar
+  width: 6px
+  background: coral
+
+::-webkit-scrollbar-track
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+
+::-webkit-scrollbar-thumb
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3)

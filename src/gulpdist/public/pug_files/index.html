@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Список пользователей</title><link href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" rel="stylesheet"><link href="/stylesheet_files/index.css" rel="stylesheet"><script src="https://code.jquery.com/jquery-3.6.0.js"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script></head><body><h2 class="title">Список пользователей</h2><div class="scroll-table"><table border="1"><thead><tr class="title_row"><th>Фото</th><th>Имя</th><th>Дата рождения</th><th>Почта</th><th class="role">Роль</th><th class="state">Статус</th></tr></thead><tbody></tbody></table><script>$(".date").datepicker();
+$( ".sel" ).selectmenu();
+$.datepicker.setDefaults({
+    closeText: "Закрыть",
+    prevText: "Пред",
+    nextText: "След",
+    currentText: "Сегодня",
+    monthNames: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+        "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+    monthNamesShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн",
+        "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+    dayNames: ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"],
+    dayNamesShort: ["вск", "пнд", "втр", "срд", "чтв", "птн", "сбт"],
+    dayNamesMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+    weekHeader: "Нед",
+    dateFormat: "dd.mm.yy",
+    firstDay: 1,
+    isRTL: false,
+    showMonthAfterYear: false,
+    yearSuffix: ""});
+
+$(document).on('change', '.date', function () {
+    var cur = (this.id).replace("date:","")
+    var text = this.value
+          $.ajax({
+              url: "/editdate",
+              method: 'post',
+              dataType: 'html',
+              data: {text: text, user: cur},
+               })
+});
+$(document).on('change', '.mail', function () {
+    var cur = (this.id).replace("mail:", "")
+    var text = this.value
+    $.ajax({
+        url: "/editmail",
+        method: 'post',
+        dataType: 'html',
+        data: {text: text, user: cur},
+    })
+});
+$(document).on('selectmenuchange', '.sel.role', function () {
+    var cur = (this.id).replace("role:", "")
+    var text = this.value;
+$.ajax({
+url: "/editrole",
+    method: 'post',
+    dataType: 'html',
+    data: {text: text, user: cur},
+    })
+});
+$(document).on('selectmenuchange', '.sel.stat', function () {
+    var cur = (this.id).replace("status:", "")
+    var text = this.value;
+    $.ajax({
+        url: "/editstat",
+        method: 'post',
+        dataType: 'html',
+        data: {text: text, user: cur},
+    })
+});</script></div></body></html>
